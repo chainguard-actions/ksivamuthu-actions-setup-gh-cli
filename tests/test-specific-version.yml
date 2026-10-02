@@ -1,0 +1,28 @@
+name: Test specific version installation
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: setup-gh
+        name: Setup gh CLI with specific version
+        uses: .
+        with:
+          version: '2.40.0'
+      - name: Assert gh CLI version matches requested version
+        run: |
+          echo "Checking gh CLI version..."
+          if ! command -v gh &>/dev/null; then
+            echo "FAIL: gh CLI not found in PATH"
+            exit 1
+          fi
+          GH_VERSION=$(gh --version 2>&1 | head -n1)
+          echo "gh version output: $GH_VERSION"
+          if echo "$GH_VERSION" | grep -q "2.40.0"; then
+            echo "PASS: gh CLI version 2.40.0 is installed"
+          else
+            echo "FAIL: expected version 2.40.0 but got: $GH_VERSION"
+            exit 1
+          fi

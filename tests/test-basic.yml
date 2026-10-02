@@ -1,0 +1,25 @@
+name: Test basic usage (default version)
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: setup-gh
+        name: Setup gh CLI with defaults
+        uses: .
+      - name: Assert gh CLI is installed and executable
+        run: |
+          echo "Checking gh CLI is available..."
+          if ! command -v gh &>/dev/null; then
+            echo "FAIL: gh CLI not found in PATH"
+            exit 1
+          fi
+          GH_VERSION=$(gh --version 2>&1 | head -n1)
+          echo "gh version: $GH_VERSION"
+          if [ -z "$GH_VERSION" ]; then
+            echo "FAIL: gh --version returned empty output"
+            exit 1
+          fi
+          echo "PASS: gh CLI is installed"
