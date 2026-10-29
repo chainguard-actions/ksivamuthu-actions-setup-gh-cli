@@ -6,9 +6,9 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v3 | [`v3`](https://github.com/chainguard-actions/ksivamuthu-actions-setup-gh-cli/tree/v3) | [`c78dbed`](https://github.com/ksivamuthu/actions-setup-gh-cli/commit/c78dbed4be2f8d6133a14a9a597ee12fd4ed5c93) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v3 | [`v3`](https://github.com/chainguard-actions/ksivamuthu-actions-setup-gh-cli/tree/v3) | [`c78dbed`](https://github.com/ksivamuthu/actions-setup-gh-cli/commit/c78dbed4be2f8d6133a14a9a597ee12fd4ed5c93) | [`HARDENING.md`](https://github.com/chainguard-actions/ksivamuthu-actions-setup-gh-cli/blob/v3/HARDENING.md) |
 
 ## Privacy
 
